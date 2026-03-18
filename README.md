@@ -2,6 +2,13 @@
 
 Seven AI-powered development agents packaged as a browser-first toolkit. The core release stays flat and browser-friendly: the app, the sales page, the test suite, the docs, the schema reference, the monetization plan, and seven agent config files. This workspace also includes an optional `cloudflare-trial/` Worker scaffold for teams that want a hosted free-trial endpoint.
 
+## Live Links
+
+- Landing page: [dev-agent-suite.vercel.app](https://dev-agent-suite.vercel.app)
+- App: [dev-agent-suite.vercel.app/dev-agent-suite.html](https://dev-agent-suite.vercel.app/dev-agent-suite.html)
+- Hosted trial worker: [dev-agent-suite-trial.bouroguis.workers.dev/health](https://dev-agent-suite-trial.bouroguis.workers.dev/health)
+- Launch copy pack: `LAUNCH_KIT.md`
+
 ## Agents
 
 | ID | Model | What it does |
