@@ -8,6 +8,7 @@ Seven AI-powered development agents packaged as a browser-first toolkit. The cor
 - App: [dev-agent-suite.vercel.app/dev-agent-suite.html](https://dev-agent-suite.vercel.app/dev-agent-suite.html)
 - Hosted trial worker: [dev-agent-suite-trial.bouroguis.workers.dev/health](https://dev-agent-suite-trial.bouroguis.workers.dev/health)
 - Launch copy pack: `LAUNCH_KIT.md`
+- Final ready-to-post copy: `FINAL_LAUNCH_COPY.md`
 
 ## Agents
 
