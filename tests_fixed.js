@@ -1,6 +1,6 @@
 /**
  * Dev Agent Suite — Master Test Suite v2.0
- * Tests: app, landing page, agent configs, documentation, release integrity
+ * Tests: app, landing page, routing, companion tool, agent configs, documentation, release integrity
  * Run: node tests_fixed.js  (from the release directory)
  * No dependencies — Node.js built-ins only.
  */
@@ -26,12 +26,17 @@ const fileExists     = f => fs.existsSync(path.join(__dirname, f));
 const readFile       = f => fs.readFileSync(path.join(__dirname, f), 'utf8');
 const fileSize       = f => fs.statSync(path.join(__dirname, f)).size;
 
-const app     = readFile('dev-agent-suite.html');
-const landing = readFile('landing.html');
-const guide   = readFile('GUIDE.md');
-const readme  = readFile('README.md');
-const schemas = readFile('SCHEMAS.md');
-const strat   = readFile('MONETIZATION_STRATEGY.md');
+const rootIndex       = readFile('index.html');
+const app             = readFile('dev-agent-suite.html');
+const landing         = readFile('landing.html');
+const frameworkIndex  = readFile('framework-finder/index.html');
+const frameworkApp    = readFile('framework-finder/app.js');
+const frameworkStyles = readFile('framework-finder/styles.css');
+const guide           = readFile('GUIDE.md');
+const readme          = readFile('README.md');
+const schemas         = readFile('SCHEMAS.md');
+const strat           = readFile('MONETIZATION_STRATEGY.md');
+const audit           = readFile('REPO_TRUTH_AUDIT.md');
 
 const AGENT_IDS = ['orchestrator','story-generator','dev-planner','ui-sketcher',
                    'test-writer','code-reviewer','bug-analyzer'];
@@ -45,8 +50,10 @@ const AGENT_FILES = AGENT_IDS.map(id => `${id}.md`);
 // ═══════════════════════════════════════════════════════════════════════
 console.log('\n[1] Release file inventory');
 const REQUIRED_FILES = [
-  'dev-agent-suite.html','landing.html','README.md','GUIDE.md',
-  'SCHEMAS.md','MONETIZATION_STRATEGY.md','tests_fixed.js',
+  'index.html','dev-agent-suite.html','landing.html',
+  'framework-finder/index.html','framework-finder/app.js','framework-finder/styles.css',
+  'README.md','GUIDE.md','SCHEMAS.md','MONETIZATION_STRATEGY.md',
+  'REPO_TRUTH_AUDIT.md','tests_fixed.js',
   ...AGENT_FILES
 ];
 REQUIRED_FILES.forEach(f => test(`File exists: ${f}`, () => assert(fileExists(f), `Missing: ${f}`)));
@@ -223,6 +230,19 @@ test('script/style tags balanced',() => {
 });
 test('ends </html>',              () => assertMatch(landing.trimEnd(), /<\/html>$/));
 test('no hardcoded API keys',     () => assert(!landing.match(/sk-ant-[A-Za-z0-9\-_]{20,}/)));
+console.log('\n[9.5] Root routing, companion tool, and audit');
+test('root index redirects to landing.html', () => assertContains(rootIndex, 'url=landing.html'));
+test('root index keeps JS redirect',         () => assertContains(rootIndex, "window.location.replace('landing.html')"));
+test('root index links companion tool',      () => assertContains(rootIndex, 'framework-finder/'));
+test('framework finder title',               () => assertContains(frameworkIndex, '<title>Framework Finder 2026</title>'));
+test('framework finder uses relative stylesheet', () => assertContains(frameworkIndex, 'href="styles.css"'));
+test('framework finder uses relative script',     () => assertContains(frameworkIndex, '<script src="app.js"></script>'));
+test('framework finder links back to landing',    () => assertContains(frameworkIndex, '../landing.html'));
+test('framework finder app has framework catalog',() => assertContains(frameworkApp, 'const frameworkCatalog = {'));
+test('framework finder styles define page shell', () => assertContains(frameworkStyles, '.page-shell'));
+test('audit doc names AI Platform 2026 mismatch', () => assertContains(audit, 'AI Platform 2026'));
+test('audit doc records 221-pass baseline',       () => assertContains(audit, '221 passed | 0 failed | 221 total'));
+test('audit doc references framework-finder',     () => assertContains(audit, 'framework-finder/'));
 
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -275,6 +295,9 @@ test('README.md: all 7 agents listed',    () => AGENT_IDS.every(id => { assertCo
 test('README.md: quick start steps',      () => assertContains(readme, 'Quick Start'));
 test('README.md: test command shown',     () => assertContains(readme, 'node tests'));
 test('README.md: model strings correct',  () => { assertContains(readme,'claude-sonnet-4-6'); assertContains(readme,'claude-opus-4-6'); });
+test('README.md: framework finder documented', () => assertContains(readme, 'framework-finder/'));
+test('README.md: audit doc documented',       () => assertContains(readme, 'REPO_TRUTH_AUDIT.md'));
+test('GUIDE.md: framework finder documented', () => assertContains(guide, 'framework-finder/'));
 test('MONETIZATION_STRATEGY.md: 3 tiers',() => { assertContains(strat,'$29'); assertContains(strat,'$79'); assertContains(strat,'$199'); });
 test('MONETIZATION_STRATEGY.md: Lemon Squeezy rationale', () => assertContains(strat,'Lemon Squeezy'));
 test('MONETIZATION_STRATEGY.md: 90-day target',           () => assertContains(strat,'90-Day'));

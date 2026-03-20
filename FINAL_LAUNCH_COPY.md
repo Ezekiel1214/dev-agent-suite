@@ -4,6 +4,8 @@ Prepared March 18, 2026.
 
 Use this file for the exact public-facing copy. `LAUNCH_KIT.md` is the broader strategy document. This file is the polished posting script.
 
+Repo note: `framework-finder/` is a companion experience in this workspace. Keep the public copy here focused on Dev Agent Suite unless you intentionally want to promote the companion tool too.
+
 ## Product Hunt
 
 ### Name
@@ -62,12 +64,14 @@ A few details:
 - there is a hosted trial live now
 - users can also switch to Gemini Free or Anthropic BYOK
 - the project includes a bundled validation suite and the repo is public
+- the repo also contains a companion Framework Finder at `/framework-finder/`
 
 If you try it, I would especially love feedback on:
 1. which agent or workflow feels most useful in real work
 2. whether the hosted trial removes enough setup friction
 
 Live app: https://dev-agent-suite.vercel.app/dev-agent-suite.html
+Companion tool: https://dev-agent-suite.vercel.app/framework-finder/
 Repo: https://github.com/Ezekiel1214/dev-agent-suite
 ```
 

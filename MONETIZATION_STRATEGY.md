@@ -81,7 +81,7 @@ The following items must be completed before the first sale:
 
 ### 3.1 Pre-launch (Week −2 to 0)
 
-The product must be complete and tested before any public announcement. This means the 220-test suite passes cleanly, the landing page is live, and at least three people outside the team have used the app and reported back.
+The product must be complete and tested before any public announcement. This means the validation suite passes cleanly, the landing page is live, and at least three people outside the team have used the app and reported back.
 
 Prepare the following assets before launch day: a 90-second screen recording of a full Workflow A (new feature, from blank input to reviewed plan), five screenshots of individual agents in action, a Product Hunt listing draft, and a 500-word X/Twitter launch thread.
 
@@ -93,7 +93,7 @@ Schedule the post for Tuesday 12:01 AM Pacific Time (the highest-traffic weekday
 
 ### 3.3 Hacker News "Show HN"
 
-Post as "Show HN: I put 7 AI dev agents in a single HTML file (BYOK, no server)." The technical novelty — a self-contained single-file app that calls Gemini or Anthropic directly from the browser, with an optional hosted-trial Worker path — is genuinely interesting to the HN audience. The 220-test-suite angle and the agent JSON schema handoff protocol will attract technical engagement.
+Post as "Show HN: I put 7 AI dev agents in a single HTML file (BYOK, no server)." The technical novelty — a self-contained single-file app that calls Gemini or Anthropic directly from the browser, with an optional hosted-trial Worker path — is genuinely interesting to the HN audience. The validation-suite angle and the agent JSON schema handoff protocol will attract technical engagement.
 
 GitHub Copilot charges $19/user/month Business. A team of 10 on Copilot costs $2,280/year. This comparison, stated as a concrete number in the HN comment thread, is the most effective response to "why not just use X."
 
@@ -141,7 +141,7 @@ The Studio tier includes white-label rights at $199. For agencies wanting a full
 
 ## 5. Key Risks and Mitigations
 
-**Risk: Anthropic changes the API pricing or model strings.** The app uses `claude-sonnet-4-6` and `claude-opus-4-6`, both current as of March 2026. Model strings have historically changed with each model generation. Mitigation: the 220-test suite includes a model string validation check. When new model strings are published, a patched version is released and distributed to all buyers within 48 hours via the post-purchase email list.
+**Risk: Anthropic changes the API pricing or model strings.** The app uses `claude-sonnet-4-6` and `claude-opus-4-6`, both current as of March 2026. Model strings have historically changed with each model generation. Mitigation: the validation suite includes a model string validation check. When new model strings are published, a patched version is released and distributed to all buyers within 48 hours via the post-purchase email list.
 
 **Risk: The BYOK model limits the addressable market.** Non-technical buyers may not know how to obtain an Anthropic API key. Mitigation: the landing page includes a "How billing works" section with a three-step visual guide, and the app's modal links directly to console.anthropic.com. The guided setup reduces friction for less experienced buyers.
 

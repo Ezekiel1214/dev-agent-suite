@@ -6,7 +6,7 @@
 
 ## Overview
 
-Dev Agent Suite is a self-contained browser app with seven specialized development agents that cover the workflow from requirements to debugging. The package also includes a landing page, a Node.js test suite, shared schema documentation, a monetization plan, one Markdown config file for each agent, and an optional `cloudflare-trial/` Worker scaffold.
+Dev Agent Suite is a self-contained browser app with seven specialized development agents that cover the workflow from requirements to debugging. The package also includes a landing page, a Node.js test suite, shared schema documentation, a monetization plan, one Markdown config file for each agent, an optional `cloudflare-trial/` Worker scaffold, and a companion `framework-finder/` static tool for stack comparison.
 
 The app runs directly in the browser against Gemini free tier or the Anthropic API using your own API key. If you want a hosted no-key free trial, the optional Cloudflare Worker can proxy requests through Workers AI. No build pipeline is required for the static app.
 
@@ -14,11 +14,11 @@ The app runs directly in the browser against Gemini free tier or the Anthropic A
 
 ## Quick Start
 
-1. Open `dev-agent-suite.html` in a modern browser.
-2. Select **Hosted Trial** to continue without a user API key, or switch to **Gemini Free** / **Anthropic**.
-3. If you choose a BYOK provider, click **Set API Key**.
-4. Open any agent from the nav or sidebar.
-5. Type a prompt or click a quick prompt.
+1. Open `index.html` or `landing.html` in a modern browser to view the Dev Agent Suite landing page.
+2. Open `dev-agent-suite.html` when you want the app itself.
+3. Open `framework-finder/index.html` when you want the companion stack selector.
+4. In the app, select **Hosted Trial** to continue without a user API key, or switch to **Gemini Free** / **Anthropic**.
+5. If you choose a BYOK provider, click **Set API Key**, then open any agent and start typing.
 
 Provider keys are stored only in `sessionStorage` and are sent directly to the selected provider endpoint. Hosted trial mode skips user key storage and calls the configured Worker endpoint instead.
 
@@ -53,6 +53,15 @@ cloudflare-trial/
 |-- wrangler.jsonc
 |-- README.md
 `-- src/index.js
+```
+
+The companion Framework Finder stays separate from the Dev Agent Suite runtime:
+
+```text
+framework-finder/
+|-- index.html
+|-- app.js
+`-- styles.css
 ```
 
 ---
@@ -302,9 +311,15 @@ The core static bundle extracts into a single flat folder, and this workspace al
 
 ```text
 dev-agent-suite/
+|-- index.html
 |-- dev-agent-suite.html
 |-- landing.html
+|-- framework-finder/
+|   |-- index.html
+|   |-- app.js
+|   `-- styles.css
 |-- tests_fixed.js
+|-- REPO_TRUTH_AUDIT.md
 |-- README.md
 |-- GUIDE.md
 |-- SCHEMAS.md
@@ -328,17 +343,17 @@ dev-agent-suite/
 
 ### Local use
 
-Open `dev-agent-suite.html` directly in a browser. No server is required.
+Open `index.html` for the landing flow, `dev-agent-suite.html` for the app, or `framework-finder/index.html` for the companion tool. No server is required.
 
 ### GitHub Pages
 
 1. Push the extracted folder contents to a repository.
 2. Configure Pages to deploy from the branch root.
-3. Visit `https://yourusername.github.io/repo-name/dev-agent-suite.html` for the app or `https://yourusername.github.io/repo-name/landing.html` for the landing page.
+3. Visit `https://yourusername.github.io/repo-name/` for the landing page, `https://yourusername.github.io/repo-name/dev-agent-suite.html` for the app, or `https://yourusername.github.io/repo-name/framework-finder/` for the companion tool.
 
 ### Netlify / Vercel
 
-Deploy the extracted release folder as a static site. If you want either page at the site root, rename the desired entry file to `index.html` before deploying.
+Deploy the extracted release folder as a static site. In this repo, `index.html` already serves as the root entry point for Dev Agent Suite, while the companion stack selector lives at `/framework-finder/`.
 
 ### Cloudflare Workers AI hosted trial
 
@@ -349,7 +364,7 @@ Deploy the extracted release folder as a static site. If you want either page at
 
 ### Any static host
 
-Upload `dev-agent-suite.html` by itself if you only need the app, or upload the full extracted folder if you also want the landing page, docs, and agent config files online.
+Upload `dev-agent-suite.html` by itself if you only need the app, or upload the full extracted folder if you also want the landing page, companion framework selector, docs, and agent config files online.
 
 ---
 

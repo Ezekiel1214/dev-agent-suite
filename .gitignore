@@ -1,2 +1,3 @@
 .vercel
 cloudflare-trial/.wrangler/
+.playwright-cli/

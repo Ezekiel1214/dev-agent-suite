@@ -2,6 +2,8 @@
 
 Prepared March 18, 2026 for the public launch of Dev Agent Suite.
 
+Repo note: keep public launch copy centered on Dev Agent Suite. The repo also contains a companion `framework-finder/` experience, but it is secondary to the main product narrative.
+
 ## Positioning
 
 Primary angle:
@@ -16,6 +18,7 @@ Secondary angles:
 
 - Landing page: `https://dev-agent-suite.vercel.app`
 - App: `https://dev-agent-suite.vercel.app/dev-agent-suite.html`
+- Framework Finder companion: `https://dev-agent-suite.vercel.app/framework-finder/`
 - GitHub repo: `https://github.com/Ezekiel1214/dev-agent-suite`
 
 ## Repo Metadata
@@ -113,6 +116,7 @@ The unusual part is the packaging:
 - there is now a hosted trial for zero-key testing
 - you can also switch to Gemini Free or Anthropic BYOK
 - agent handoffs use simple JSON schemas so outputs can be chained cleanly
+- the repo also ships a companion Framework Finder at `/framework-finder/`
 
 Live app: https://dev-agent-suite.vercel.app/dev-agent-suite.html
 Repo: https://github.com/Ezekiel1214/dev-agent-suite
